@@ -1,0 +1,99 @@
+<app-header backButton="/auth" title="Registro"></app-header>
+<ion-content>
+  <div class="d-flex-center">
+    <form [formGroup]="form" class="auth-form" (ngSubmit)="submit()">
+      <app-logo></app-logo>
+
+      <p>
+        <small>
+          <ion-text color="medium">REGÍSTRATE</ion-text>
+        </small>
+      </p>
+
+      
+      <!-- Nombre -->
+      <app-custom-input
+        autocomplete="name"
+        [control]="form.controls.name"
+        type="text"
+        icon="person-outline"
+        label="Nombre"
+      ></app-custom-input>
+
+      <!-- ...existing code... -->
+      <div
+        class="validators"
+        *ngIf="form.controls.name.errors && form.controls.name.touched "
+      >
+        <div *ngIf="form.controls.name.errors?.['required']">
+          El nombre es requerido
+        </div>
+        <div *ngIf="form.controls.name.errors?.['minlength']">
+          El nombre debe tener al menos {{
+          form.controls.name.errors?.['minlength']?.requiredLength }} caracteres
+        </div>
+      </div>
+      <!-- ...existing code... -->
+
+      <!-- Correo -->
+      <app-custom-input
+        autocomplete="email"
+        [control]="form.controls.email"
+        type="email"
+        icon="mail-outline"
+        label="Correo"
+      ></app-custom-input>
+
+      <div
+        class="validators"
+        *ngIf="form.controls.email.errors && form.controls.email.touched"
+      >
+        <div *ngIf="form.controls.email.errors?.['required']">
+          El correo es requerido
+        </div>
+        <div *ngIf="form.controls.email.errors?.['email']">
+          El correo no es válido
+        </div>
+      </div>
+
+      <!-- Contraseña -->
+      <app-custom-input
+        label="Contraseña"
+        [control]="form.controls.password"
+        type="password"
+        icon="lock-closed-outline"
+      ></app-custom-input>
+      <div
+        class="validators"
+        *ngIf="form.controls.password.errors && form.controls.password.touched"
+      >
+        <div *ngIf="form.controls.password.errors?.['required']">
+          La contraseña es requerida
+        </div>
+      </div>
+
+      <ion-button
+        expand="block"
+        mode="ios"
+        class="submit"
+        type="submit"
+        [disabled]="form.invalid"
+      >
+        REGISTRARSE
+        <ion-icon slot="end" name="person-add-outline"></ion-icon>
+      </ion-button>
+
+      <!-- Enlace para volver al login -->
+      <ion-button
+        class="ion-margin-top"
+        routerLink="login"
+        expand="block"
+        mode="ios"
+        fill="outline"
+      >
+        ¿Ya tienes cuenta? Iniciar sesión
+        <ion-icon slot="end" name="log-in-outline"></ion-icon>
+      </ion-button>
+    </form>
+  </div>
+</ion-content>

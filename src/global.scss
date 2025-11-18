@@ -16,7 +16,7 @@
 @import "@ionic/angular/css/normalize.css";
 @import "@ionic/angular/css/structure.css";
 @import "@ionic/angular/css/typography.css";
-@import "@ionic/angular/css/display.css";
+@import '@ionic/angular/css/display.css';
 
 /* Optional CSS utils that can be commented out */
 @import "@ionic/angular/css/padding.css";
@@ -25,13 +25,274 @@
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
 
-/**
- * Ionic Dark Mode
- * -----------------------------------------------------
- * For more info, please see:
- * https://ionicframework.com/docs/theming/dark-mode
- */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+    -webkit-text-fill-color: black !important; // Cambia a black o el color que desees
+    transition: background-color 5000s ease-in-out 0s;
+}
 
-/* @import "@ionic/angular/css/palettes/dark.always.css"; */
-/* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import "@ionic/angular/css/palettes/dark.system.css";
+.shiny-title {
+  display: inline-block;
+  font-weight: 500;
+  /* hace el texto transparente para poder "recubrirlo" con el gradiente */
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  background: linear-gradient(
+    90deg,
+    #0a64ff 0%,
+    #ffffff 40%,
+    #0a64ff 60%,
+    #0a64ff 100%
+  );
+  background-size: 390% 100%;
+  -webkit-background-clip: text;
+  
+  background-clip: text;
+  animation: shine-text 8.2s linear infinite;
+  
+}
+
+
+ion-header {
+  ion-toolbar {
+    padding: 0 16px;
+  }
+}
+
+/* animación suave que mueve el gradiente sobre el texto */
+@keyframes shine-text {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+
+// Toast personalizado
+.custom-toast {
+  --background: #4CAF50;
+  --color: white;
+  --border-radius: 24px;
+  --box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  
+  // Ajustar ancho al contenido (esto es clave)
+  --width: fit-content !important;
+  --max-width: 80%;
+  --min-width: auto;
+  
+  // Centrar horizontalmente
+  position: fixed !important;
+  left: 50% !important;
+  right: auto !important;
+  transform: translateX(-50%) !important;
+  
+  // Separación del borde inferior
+  bottom: 20px !important;
+  
+  .toast-wrapper {
+    display: inline-flex;
+  }
+  
+  .toast-message {
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: 500;
+    text-align: center;
+    white-space: nowrap;
+  }
+  
+  .toast-icon {
+    font-size: 20px;
+    margin-right: 8px;
+  }
+}
+
+ion-button {
+    text-transform: none;
+}
+
+// safe padding for ios
+.safe-p-bottom{
+    padding-bottom: constant(safe-area-inset-bottom); // for ios 13+
+    padding-bottom: env(safe-area-inset-bottom); // for previous ios versions
+}
+
+.submit {
+    margin-top: 40px;
+}
+
+.empty {
+    text-align: center;
+    padding: 60px;
+    opacity: 30%;
+
+    ion-icon {
+        font-size: 100px;
+    }
+}
+
+.d-flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.custom-input {
+    --border-color: #e0e0e0;
+    --border-radius: 15px;
+    --border-style: solid;
+    --border-width: 1px;
+    margin: 20px 0;
+
+    ion-label {
+        position: relative;
+        bottom: 2px;
+    }
+
+    .eye-icon {
+        position: relative;
+        top: 13px;
+    }
+}
+
+.validators {
+    color: var(--ion-color-danger);
+    font-size: 13px;
+    text-align: center;
+}
+
+
+.auth-form {
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+}
+
+.product-item {
+    --padding-top: 20px;
+
+    ion-avatar {
+        width: 70px;
+        height: 80px;
+        --border-radius: 15px;
+    }
+
+    .name {
+        font-weight: 600;
+        padding-bottom: 5px;
+    }
+
+    .data {
+        font-size: 13px;
+
+        strong {
+            font-weight: 500;
+        }
+    }
+
+    .option-btn {
+        font-size: 27px;
+    }
+
+    ion-chip {
+        font-size: 14px;
+        border-radius: 10px;
+        margin-left: 0;
+    }
+}
+
+@media (min-width: 769px) {
+    .auth-form {
+        width: 500px;
+    }
+
+    .add-update-modal {
+        --height: 680px;
+    }
+}
+
+
+//CONFIGURACION DE FORGOT PASSWORD PAGE
+// Contenedor del título
+.title-container {
+  margin-bottom: 20px;
+  min-height: 50px;
+  overflow: hidden;
+}
+
+.subtitle {
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+// Input wrapper con transición suave
+.input-wrapper {
+  transition: all 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  opacity: 1;
+  transform: scale(1);
+  
+  &.minimized {
+    opacity: 0.6;
+    transform: scale(0.98) translateY(-5px);
+  }
+}
+
+// Contenedor de contraseña con animación elegante y suave
+.password-container {
+  overflow: hidden;
+  animation: smoothSlideIn 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes smoothSlideIn {
+  0% {
+    opacity: 0;
+    max-height: 0;
+    transform: translateY(20px);
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+    max-height: 200px;
+    transform: translateY(0);
+  }
+}
+
+// Efecto de parpadeo para el botón
+ion-button {
+  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  
+  &.pulsing {
+    animation: pulse 1.5s ease-in-out infinite;
+  }
+  
+  .button-text {
+    display: inline-block;
+    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  
+  ion-icon {
+    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+}
+
+// Animación de parpadeo suave
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(0.98);
+  }
+}
+
+// Ajustes generales
+.auth-form {
+  app-custom-input {
+    margin-bottom: 16px;
+  }
+}

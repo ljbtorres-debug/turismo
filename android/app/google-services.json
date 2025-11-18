@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "767075209197",
+    "project_id": "product-admin-jtk",
+    "storage_bucket": "product-admin-j.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:767075209197:android:e1b014355a7c50c712e1e4",
+        "android_client_info": {
+          "package_name": "yavi.product.jtk"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANNIDo_OQhENdfvBRG4Nm39cLaY26LrUs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
