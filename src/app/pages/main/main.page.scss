@@ -1,0 +1,136 @@
+ion-menu {
+    --width: 320px;
+    --background: transparent;
+}
+
+ion-menu::part(container) {
+    background: transparent;
+    box-shadow: none;
+}
+
+ion-content.menu-content {
+    --background: transparent;
+    position: relative;
+}
+
+// Aplicar desenfoque cuando el menú está visible
+ion-menu.show-menu ~ #menu-content {
+  filter: blur(3px) brightness(1);
+}
+
+/* Panel glass */
+.menu-glass {
+    position: absolute;
+    top: 24px;
+    /* un poco más arriba ahora que no hay header */
+    left: 12px;
+    right: 12px;
+    bottom: 16px;
+
+    border-radius: 26px;
+    padding: 20px 18px;
+
+    background: rgba(143, 152, 187, 0.509);
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+/* 🔹 Título YaviTour + Menú */
+.menu-header {
+    margin-bottom: 22px;
+    text-align: center;
+    /* espacio entre título e items */
+}
+
+.menu-brand {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 700;
+    /* tipo “negrita” */
+    color: #ffffff;
+}
+
+.menu-subtitle {
+    margin: 4px 0 0;
+    font-size: 14px;
+    font-weight: 400;
+    color: #ffffff;
+    /* mismo estilo que los items */
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+/* Items */
+.menu-item {
+    --background: transparent;
+    --ion-item-background: transparent;
+    color: #ffffff;
+    font-size: 15px;
+}
+
+.menu-item ion-icon {
+    color: #ffffff;
+}
+
+.menu-item+.menu-item {
+    margin-top: 14px;
+}
+
+.menu-item {
+    &.active {
+
+        color: var(--ion-color-warning);
+
+        ion-icon {
+            color: var(--ion-color-warning)
+        }
+    }
+}
+
+h4{
+    margin-top: 5px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.avatar-icon {
+    font-size: 75px;
+    color: #ffffffcf;
+}
+
+
+/* 🔹 Botón Cerrar Sesión fijo abajo */
+.logout-glass {
+  position: absolute;
+  bottom: 18px;       /* ⭐ aquí lo separas del borde (ajustable entre 8–20px) */
+  left: 18px;
+  right: 18px;
+  
+  padding: 14px 18px;
+  border-radius: 22px;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 500;
+
+  background: rgba(254, 254, 255, 0.298);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.2s ease;
+}
+
+.logout-glass:hover {
+  transform: translateY(-2px);
+  background: rgba(114, 132, 206, 0.238);
+}
+
+.logout-glass ion-icon {
+  font-size: 20px;
+  color: #ffffff;
+}

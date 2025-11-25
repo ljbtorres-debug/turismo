@@ -1,13 +1,29 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>profile</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content class="ion-padding">
+  <div class="ion-padding-top ion-text-center">
+    <ion-avatar
+      *ngIf="profileImageBase64">
+      <img [src]="profileImageBase64" />
+    </ion-avatar>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">profile</ion-title>
-    </ion-toolbar>
-  </ion-header>
+    <ion-icon
+      *ngIf="!profileImageBase64"
+      name="person-circle-outline"
+      style="font-size: 120px; color: gray"
+    >
+    </ion-icon>
+
+    <ion-button
+      mode="ios"
+      class="photo-btn"
+      (click)="updateProfileImage()"
+      size="small"
+      shape="round"
+    >
+      <ion-icon name="camera-outline"></ion-icon>
+    </ion-button>
+    <h2>
+      {{user()?.name}}
+    </h2>
+    <div>RutaTour</div>
+  </div>
 </ion-content>

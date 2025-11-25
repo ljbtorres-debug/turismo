@@ -1,0 +1,29 @@
+.loading-container {
+  position: relative;
+  min-height: 80vh; // Altura mínima para que el spinner tenga espacio
+}
+
+.spinner-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  
+  ion-spinner {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+ion-card{
+  gap: 100px;
+  padding: 20px 0;
+  border-radius: 15px;
+}
+
+ion-content{
+  --padding-bottom: 70px;
+}
+
+

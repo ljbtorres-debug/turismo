@@ -24,6 +24,9 @@
 @import "@ionic/angular/css/text-alignment.css";
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
+/* You can add global styles to this file, and also import other style files */
+
+
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
@@ -203,13 +206,15 @@ ion-button {
     }
 }
 
-@media (min-width: 769px) {
+@media (min-width: 169px) {
     .auth-form {
         width: 500px;
     }
 
     .add-update-modal {
-        --height: 680px;
+        --height: 700px;
+        --border-radius: 15px;
+        
     }
 }
 
@@ -294,5 +299,23 @@ ion-button {
 .auth-form {
   app-custom-input {
     margin-bottom: 16px;
+  }
+}
+
+
+// Ajustes para el logo centrado en el header
+.header-logo {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%); // ← Agrega -50% en Y
+  width: 93px;
+  height: 93px;
+  z-index: 10;
+  
+  ion-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
   }
 }

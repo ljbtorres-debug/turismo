@@ -1,21 +1,13 @@
 <app-header title="Login"></app-header>
 <ion-content>
   <div class="d-flex-center">
-    <form [formGroup]="form" class="auth-form" (ngSubmit)="submit()" >
+    <form [formGroup]="form" class="auth-form" (ngSubmit)="submit()">
 
-        <app-logo> </app-logo>
-      <app-custom-input
-        autocomplete="email"
-        [control]="form.controls.email"
-        type="email"
-        icon="mail-outline"
-        label="Correo"
-      ></app-custom-input>
+      <app-logo> </app-logo>
+      <app-custom-input autocomplete="email" [control]="form.controls.email" type="email" icon="mail-outline"
+        label="Correo"></app-custom-input>
 
-      <div
-        class="validators"
-        *ngIf="form.controls.email.errors && form.controls.email.touched "
-      >
+      <div class="validators" *ngIf="form.controls.email.errors && form.controls.email.touched ">
         <div *ngIf="form.controls.email.errors?.['required']">
           El correo es requerido
         </div>
@@ -24,27 +16,32 @@
         </div>
       </div>
 
-      <app-custom-input
-        label="Contraseña"
-        [control]="form.controls.password"
-        type="password"
-        icon="lock-closed-outline"
-      ></app-custom-input>
-      <div
-        class="validators"
-        *ngIf="form.controls.password.errors && form.controls.password.touched "
-      >
+      <app-custom-input label="Contraseña" [control]="form.controls.password" type="password"
+        icon="lock-closed-outline"></app-custom-input>
+      <div class="validators" *ngIf="form.controls.password.errors && form.controls.password.touched ">
         <div *ngIf="form.controls.password.errors?.['required']">
           La contrasela es requerida
         </div>
       </div>
 
-        <p routerLink="forgot-password" >¿Olvidaste tu contraseña burro,caballo? </p>
+      <p routerLink="forgot-password">¿Olvidaste tu contraseña burro,caballo? </p>
 
-      <ion-button expand="block" mode="ios" class="submit" type="submit" [disabled]="form.invalid">
-        INGRESAR
-        <ion-icon slot="end" name="log-in-outline"></ion-icon>
-      </ion-button>
+      <ion-row class="ion-padding-bottom">
+        <ion-col size="9">
+          <ion-button expand="block" mode="ios" class="gradient-btn" type="submit" [disabled]="form.invalid">
+            INGRESAR
+            <ion-icon slot="end" name="log-in-outline"></ion-icon>
+          </ion-button>
+        </ion-col>
+
+         <ion-col size="3">
+            <ion-button (click)="loginWithBiometric()" mode="ios" class="gradient-btn ion-no-padding"
+              expand="block">
+              <ion-icon name="finger-print-outline"></ion-icon>
+            </ion-button>
+          </ion-col>
+      </ion-row>
+     
 
        <ion-button class="ion-margin-top" routerLink="sign-up" expand="block" mode="ios" fill="outline">
         Regístrate

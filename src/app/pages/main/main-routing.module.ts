@@ -3,10 +3,11 @@ import { Routes, RouterModule } from '@angular/router';
 import { MainPage } from './main.page';
 
 const routes: Routes = [
-  
-    {path: '',
+
+  {
+    path: '',
     component: MainPage,
-    },
+    children: [
 
       {
         path: 'home',
@@ -16,21 +17,26 @@ const routes: Routes = [
         path: 'profile',
         loadChildren: () => import('./profile/profile.module').then(m => m.ProfilePageModule)
       },
+      // 👉 redirect por defecto al child 'home'
       {
         path: '',
         redirectTo: 'home',
         pathMatch: 'full'
       },
-      { 
-    path: '**', 
-    redirectTo: 'home' 
+      // 👉 wildcard dentro de los children
+      {
+        path: '**',
+        redirectTo: 'home'
+      }
+
+    ]
   }
-    
-  
+
 ];
+
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class MainPageRoutingModule {}
+export class MainPageRoutingModule { }
